@@ -30,8 +30,8 @@
 
 """Contains base classes used to parse and convert arguments."""
 
-import cStringIO
 import csv
+import io
 import string
 
 
@@ -325,7 +325,7 @@ class CsvListSerializer(ArgumentSerializer):
 
   def Serialize(self, value):
     """Serialize a list as a string, if possible, or as a unicode string."""
-    output = cStringIO.StringIO()
+    output = io.StringIO()
     writer = csv.writer(output)
 
     # csv.writer doesn't accept unicode, so we convert to UTF-8.
